@@ -8,6 +8,8 @@ void main() {
   runApp(
     GetMaterialApp(
       title: "Application",
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.system,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     ),

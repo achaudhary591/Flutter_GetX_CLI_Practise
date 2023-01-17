@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:getx_examples/app/modules/state_management/views/state_management_view.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -53,23 +54,52 @@ class HomeView extends GetView<HomeController> {
           ElevatedButton(
               onPressed: () {
                 Get.bottomSheet(
-                  Wrap(
-                    children: <Widget>[
-                      ListTile(
-                        leading: Icon(Icons.wb_sunny_outlined),
-                        title: Text("Light Theme"),
-                        onTap: () => {Get.changeTheme(ThemeData.light())},
+                  StatefulBuilder(builder: (context, setState) {
+                    return Container(
+                      child: Wrap(
+                        children: <Widget>[
+                          ListTile(
+                            onTap: () => {
+                              Get.changeTheme(ThemeData.light()),
+                              Get.back(),
+                            },
+                            leading: const Icon(Icons.wb_sunny_outlined),
+                            title: const Text(
+                              "Light Theme",
+                            ),
+                          ),
+                          ListTile(
+                            leading: const Icon(Icons.wb_sunny),
+                            title: const Text(
+                              "Dark Theme",
+                            ),
+                            onTap: () => {
+                              Get.changeTheme(ThemeData.dark()),
+                              Get.back(),
+                            },
+                          ),
+                        ],
                       ),
-                      ListTile(
-                        leading: Icon(Icons.wb_sunny),
-                        title: Text("Dark Theme"),
-                        onTap: () => {Get.changeTheme(ThemeData.dark())},
-                      ),
-                    ],
-                  ),
+                    );
+                  }),
                 );
               },
-              child: Text("Bottom Sheet")),
+              child: const Text("Bottom Sheet")),
+          ElevatedButton(
+              onPressed: () {
+                Get.toNamed("/page1");
+              },
+              child: const Text("Page1")),
+          ElevatedButton(
+              onPressed: () {
+                Get.toNamed("/page2");
+              },
+              child: const Text("Page2")),
+          ElevatedButton(
+              onPressed: () {
+                Get.toNamed("/state-management");
+              },
+              child: const Text("StateManagement")),
         ],
       )),
     );
