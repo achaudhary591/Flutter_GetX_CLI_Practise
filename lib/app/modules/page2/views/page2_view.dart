@@ -6,7 +6,7 @@ import 'package:getx_examples/app/modules/state_management/views/state_managemen
 import '../controllers/page2_controller.dart';
 
 class Page2View extends GetView<Page2Controller> {
-  Rx<StateManagementView> st = StateManagementView().obs;
+  StateManagementView st = StateManagementView();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +14,7 @@ class Page2View extends GetView<Page2Controller> {
         title: const Text('Page2View'),
         centerTitle: true,
       ),
-      body: Center(child: Obx(() => Text("the count = ${st.value.test}"))),
+      body: Center(child: Obx(() => Text("the count = ${st.test}"))),
     );
   }
 }

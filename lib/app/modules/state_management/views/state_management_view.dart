@@ -6,15 +6,6 @@ import '../controllers/state_management_controller.dart';
 class StateManagementView extends GetView<StateManagementController> {
   static var count = 0.obs;
 
-  StateManagementView({super.key});
-
-  static int increment() {
-    count = count + 1;
-    return count.value;
-  }
-
-  var test = increment().obs;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +27,7 @@ class StateManagementView extends GetView<StateManagementController> {
             ),
             ElevatedButton(
                 onPressed: () {
-                  count.value = increment();
+                  count = count + 1;
                 },
                 child: const Text("Increament"))
           ],
@@ -44,4 +35,5 @@ class StateManagementView extends GetView<StateManagementController> {
       ),
     );
   }
+  var test = count.value.obs;
 }
