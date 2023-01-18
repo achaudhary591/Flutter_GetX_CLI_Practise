@@ -52,37 +52,74 @@ class HomeView extends GetView<HomeController> {
               },
               child: const Text("Show Dialogue")),
           ElevatedButton(
-              onPressed: () {
-                Get.bottomSheet(
-                  StatefulBuilder(builder: (context, setState) {
-                    return Container(
-                      child: Wrap(
-                        children: <Widget>[
-                          ListTile(
-                            onTap: () => {
-                              Get.changeTheme(ThemeData.light()),
-                              Get.back(),
-                            },
-                            leading: const Icon(Icons.wb_sunny_outlined),
-                            title: const Text(
-                              "Light Theme",
+              onPressed: () async {
+                // Get.bottomSheet(
+                //   StatefulBuilder(
+                //       builder: (BuildContext context, StateSetter setState) {
+                //     return Container(
+                //       child: Wrap(
+                //         children: [
+                //           ListTile(
+                //             onTap: () => {
+                //               Get.changeTheme(ThemeData.light()),
+                //               //Get.back(),
+                //             },
+                //             leading: const Icon(Icons.wb_sunny_outlined),
+                //             title: const Text(
+                //               "Light Theme",
+                //             ),
+                //           ),
+                //           ListTile(
+                //             leading: const Icon(Icons.wb_sunny),
+                //             title: const Text(
+                //               "Dark Theme",
+                //             ),
+                //             onTap: () => {
+                //               Get.changeTheme(ThemeData.dark()),
+                //               //Get.back(),
+                //             },
+                //           ),
+                //         ],
+                //       ),
+                //     );
+                //   }),
+                // );
+
+                showModalBottomSheet(
+                    backgroundColor: Colors.transparent,
+                    context: context,
+                    builder: (BuildContext context) {
+                      return StatefulBuilder(
+                        builder: (BuildContext context, StateSetter setState) {
+                          return Container(
+                            child: Wrap(
+                              children: [
+                                ListTile(
+                                  onTap: () => {
+                                    Get.changeTheme(ThemeData.light()),
+                                    //Get.back(),
+                                  },
+                                  leading: const Icon(Icons.wb_sunny_outlined),
+                                  title: const Text(
+                                    "Light Theme",
+                                  ),
+                                ),
+                                ListTile(
+                                  leading: const Icon(Icons.wb_sunny),
+                                  title: const Text(
+                                    "Dark Theme",
+                                  ),
+                                  onTap: () => {
+                                    Get.changeTheme(ThemeData.dark()),
+                                    //Get.back(),
+                                  },
+                                ),
+                              ],
                             ),
-                          ),
-                          ListTile(
-                            leading: const Icon(Icons.wb_sunny),
-                            title: const Text(
-                              "Dark Theme",
-                            ),
-                            onTap: () => {
-                              Get.changeTheme(ThemeData.dark()),
-                              Get.back(),
-                            },
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
-                );
+                          );
+                        },
+                      );
+                    });
               },
               child: const Text("Bottom Sheet")),
           ElevatedButton(
