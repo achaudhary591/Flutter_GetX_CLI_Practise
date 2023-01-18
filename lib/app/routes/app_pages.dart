@@ -29,12 +29,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PAGE2,
-      page: () => const Page2View(),
+      page: () => Page2View(),
       binding: Page2Binding(),
     ),
     GetPage(
       name: _Paths.STATE_MANAGEMENT,
-      page: () => const StateManagementView(),
+      page: () => StateManagementView(),
       binding: StateManagementBinding(),
     ),
   ];
